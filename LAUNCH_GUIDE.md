@@ -22,11 +22,19 @@ sudo apt-get install -y build-essential cmake libboost-all-dev libssl-dev libzmq
 ## Step 2: Build Privōx
 
 ```bash
-git clone https://github.com/your-username/privox.git
-cd privox
+git clone --recursive https://github.com/frankiefw/Privox.git
+cd Privox
 mkdir build && cd build
 cmake ..
 make
+```
+
+Alternatively, use our automated build script:
+```bash
+git clone --recursive https://github.com/frankiefw/Privox.git
+cd Privox
+chmod +x build_privox.sh
+./build_privox.sh
 ```
 
 ## Step 3: Generate a Wallet
@@ -55,10 +63,12 @@ Replace `YOUR_WALLET_ADDRESS` with your actual Privōx wallet address.
 
 ```bash
 sudo apt-get install nginx
-git clone https://github.com/your-username/privox-blockchain-explorer.git
+git clone https://github.com/frankiefw/privox-blockchain-explorer.git
 cd privox-blockchain-explorer
 # Follow the explorer's build instructions
 ```
+
+Note: The blockchain explorer repository will be available soon.
 
 ## Step 7: Connect to Other Nodes
 
