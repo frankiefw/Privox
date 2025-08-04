@@ -84,12 +84,36 @@ namespace cryptonote {
     static_assert(DIFFICULTY_TARGET_V2%60==0&&DIFFICULTY_TARGET_V1%60==0,"difficulty targets must be a multiple of 60");
     const int target = version < 2 ? DIFFICULTY_TARGET_V1 : DIFFICULTY_TARGET_V2;
     const int target_minutes = target / 60;
-    const int emission_speed_factor = EMISSION_SPEED_FACTOR_PER_MINUTE - (target_minutes-1);
-
-    uint64_t base_reward = (MONEY_SUPPLY - already_generated_coins) >> emission_speed_factor;
-    if (base_reward < FINAL_SUBSIDY_PER_MINUTE*target_minutes)
-    {
-      base_reward = FINAL_SUBSIDY_PER_MINUTE*target_minutes;
+    
+    // Privox custom reward schedule:
+    // - Initial block reward: 120 PVX (120000000000000 atomic units)
+    // - Halving every 2,102,400 blocks (~4 years with 2-minute blocks)
+    // - Tail emission: 1 PVX (1000000000000 atomic units) after 490M PVX emitted
+    
+    // Check if this is the genesis block (for premine)
+    if (already_generated_coins == 0) {
+      // Premine of 10M PVX in genesis block
+      uint64_t base_reward = 10000000000000000000; // 10M PVX
+      reward = base_reward;
+      return true;
+    }
+    
+    // Calculate which halving period we're in
+    uint64_t halving_period = 2102400; // ~4 years with 2-minute blocks
+    uint64_t current_block_height = already_generated_coins / 120000000000000; // Approximate height based on emission
+    uint64_t halvings = current_block_height / halving_period;
+    
+    // Initial block reward (120 PVX)
+    uint64_t base_reward = 120000000000000; // 120 * 10^12
+    
+    // Apply halvings
+    for (uint64_t i = 0; i < halvings && i < 64; i++) {
+      base_reward = base_reward / 2;
+    }
+    
+    // Tail emission of 1 PVX after 490M coins emitted
+    if (already_generated_coins >= 490000000000000000000) {
+      base_reward = 1000000000000; // 1 PVX tail emission
     }
 
     uint64_t full_reward_zone = get_min_block_weight(version);
