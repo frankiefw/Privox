@@ -46,8 +46,16 @@ The premine is transparently allocated to the following wallets:
 
 2. Clone the repository:
    ```
-   git clone https://github.com/your-username/privox.git
-   cd privox
+   git clone --recursive https://github.com/frankiefw/Privox.git
+   cd Privox
+   ```
+
+   Alternatively, use our automated build script:
+   ```
+   git clone --recursive https://github.com/frankiefw/Privox.git
+   cd Privox
+   chmod +x build_privox.sh
+   ./build_privox.sh
    ```
 
 3. Build the binaries:
@@ -91,9 +99,9 @@ To set up a local blockchain explorer:
    sudo apt-get install nginx
    ```
 
-2. Clone the explorer repository:
+2. Clone the explorer repository (coming soon):
    ```
-   git clone https://github.com/your-username/privox-blockchain-explorer.git
+   git clone https://github.com/frankiefw/privox-blockchain-explorer.git
    cd privox-blockchain-explorer
    ```
 
@@ -117,6 +125,12 @@ If you want to modify settings:
 - Discord: [Join our server](https://discord.gg/privox)
 - Reddit: r/privox
 - Twitter: @privoxcoin
+
+## Documentation
+
+- [Build Guide](BUILD_GUIDE.md) - Detailed instructions for building Privōx
+- [Install Dependencies](INSTALL_DEPENDENCIES.md) - Required packages for different platforms
+- [Changes from Monero](PRIVOX_CHANGES.md) - Summary of modifications from the original Monero codebase
 
 ## License
 
