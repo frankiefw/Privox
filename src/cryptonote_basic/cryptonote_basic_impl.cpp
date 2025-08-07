@@ -92,8 +92,8 @@ namespace cryptonote {
     
     // Check if this is the genesis block (for premine)
     if (already_generated_coins == 0) {
-      // Premine of 10M PVX in genesis block
-      uint64_t base_reward = 10000000000000000000; // 10M PVX
+      // Premine of 368K PVX in genesis block (2% of total supply)
+      uint64_t base_reward = 368000000000000000ULL; // 368K PVX
       reward = base_reward;
       return true;
     }
@@ -111,8 +111,8 @@ namespace cryptonote {
       base_reward = base_reward / 2;
     }
     
-    // Tail emission of 1 PVX after 490M coins emitted
-    if (already_generated_coins >= 490000000000000000000) {
+    // Tail emission of 1 PVX after 18M coins emitted
+    if (already_generated_coins >= 18000000000000000000ULL) {
       base_reward = 1000000000000; // 1 PVX tail emission
     }
 

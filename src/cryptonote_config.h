@@ -51,7 +51,7 @@
 #define BLOCKCHAIN_TIMESTAMP_CHECK_WINDOW               60
 
 // MONEY_SUPPLY - total number coins to be generated
-#define MONEY_SUPPLY                                    ((uint64_t)500000000000000000000) // 500M PVX, 12 decimals
+#define MONEY_SUPPLY                                    ((uint64_t)18400000000000000000ULL) // ~18.4M PVX, 12 decimals (max safe uint64_t)
 #define EMISSION_SPEED_FACTOR_PER_MINUTE                (20)
 #define FINAL_SUBSIDY_PER_MINUTE                        ((uint64_t)300000000000) // 3 * pow(10, 11)
 
@@ -233,7 +233,7 @@ namespace config
   boost::uuids::uuid const NETWORK_ID = { {
       0x50 ,0x56, 0x58, 0x21 , 0x50, 0x52 , 0x49, 0x56, 0x4F, 0x58, 0x21, 0x50, 0x56, 0x58, 0x21, 0x50
     } }; // Privox Network ID
-  std::string const GENESIS_TX = "013c01ff0001ffffffffffff03029b2e4c0281c0b02e7c53291a94d1d0cbff8883f8024f5142ee494ffbbd08807121017767aafcde9be00dcfd098715ebcf7f410daebc582fda69d24a28e9d0bc890d1";
+  std::string const GENESIS_TX = "";
   // Genesis block statement: "Without privacy, anonymity or expression you will never have freedom"
   uint32_t const GENESIS_NONCE = 10000;
 
@@ -277,7 +277,7 @@ namespace config
     boost::uuids::uuid const NETWORK_ID = { {
         0x54 ,0x45, 0x53, 0x54 , 0x50, 0x52 , 0x49, 0x56, 0x4F, 0x58, 0x21, 0x54, 0x45, 0x53, 0x54, 0x21
       } }; // Privox Testnet Network ID
-    std::string const GENESIS_TX = "013c01ff0001ffffffffffff03029b2e4c0281c0b02e7c53291a94d1d0cbff8883f8024f5142ee494ffbbd08807121017767aafcde9be00dcfd098715ebcf7f410daebc582fda69d24a28e9d0bc890d1";
+    std::string const GENESIS_TX = "";
     // Genesis block statement: "Without privacy, anonymity or expression you will never have freedom"
     uint32_t const GENESIS_NONCE = 10001;
   }
