@@ -51,7 +51,7 @@
 #define BLOCKCHAIN_TIMESTAMP_CHECK_WINDOW               60
 
 // MONEY_SUPPLY - total number coins to be generated
-#define MONEY_SUPPLY                                    ((uint64_t)18400000000000000000ULL) // ~18.4M PVX, 12 decimals (max safe uint64_t)
+#define MONEY_SUPPLY                                    ((uint64_t)(-1))
 #define EMISSION_SPEED_FACTOR_PER_MINUTE                (20)
 #define FINAL_SUBSIDY_PER_MINUTE                        ((uint64_t)300000000000) // 3 * pow(10, 11)
 
@@ -275,11 +275,10 @@ namespace config
     uint16_t const RPC_DEFAULT_PORT = 28236;
     uint16_t const ZMQ_RPC_DEFAULT_PORT = 29236;
     boost::uuids::uuid const NETWORK_ID = { {
-        0x54 ,0x45, 0x53, 0x54 , 0x50, 0x52 , 0x49, 0x56, 0x4F, 0x58, 0x21, 0x54, 0x45, 0x53, 0x54, 0x21
-      } }; // Privox Testnet Network ID
-    std::string const GENESIS_TX = "";
-    // Genesis block statement: "Without privacy, anonymity or expression you will never have freedom"
-    uint32_t const GENESIS_NONCE = 10001;
+        0x12 ,0x30, 0xF1, 0x71 , 0x61, 0x04 , 0x41, 0x61, 0x17, 0x31, 0x00, 0x82, 0x16, 0xA1, 0xA1, 0x12
+      } }; // Bender's daydream
+    std::string const GENESIS_TX = "013c01ff0001ffffffffffff0302df5d56da0c7d643ddd1ce61901c7bdc5fb1738bfe39fbe69c28a3a7032729c0f2101168d0c4ca86fb55a4cf6a36d31431be1c53a3bd7411bb24e8832410289fa6f3b";
+    uint32_t const GENESIS_NONCE = 10002;
   }
 
   namespace stagenet
